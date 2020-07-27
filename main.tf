@@ -6,7 +6,7 @@ resource "kubernetes_namespace" "this" {
 
 resource "kubernetes_service" "this" {
   metadata {
-    name = var.name
+    name      = var.name
     namespace = kubernetes_namespace.this.metadata[0].name
 
     labels = {
@@ -53,7 +53,7 @@ resource "kubernetes_service" "this" {
 
 resource "kubernetes_service" "this-headless" {
   metadata {
-    name = "rabbitmq-headless"
+    name      = "rabbitmq-headless"
     namespace = kubernetes_namespace.this.metadata[0].name
 
     labels = {
@@ -101,7 +101,7 @@ resource "kubernetes_service" "this-headless" {
 
 resource "kubernetes_config_map" "this" {
   metadata {
-    name = var.name
+    name      = var.name
     namespace = kubernetes_namespace.this.metadata[0].name
 
     labels = {
@@ -118,7 +118,7 @@ resource "kubernetes_config_map" "this" {
 
 resource "kubernetes_secret" "this-cookie" {
   metadata {
-    name = var.name
+    name      = var.name
     namespace = kubernetes_namespace.this.metadata[0].name
   }
 
@@ -131,7 +131,7 @@ resource "kubernetes_secret" "this-cookie" {
 
 resource "kubernetes_secret" "this" {
   metadata {
-    name = "rabbitmq-credentials"
+    name      = "rabbitmq-credentials"
     namespace = kubernetes_namespace.this.metadata[0].name
   }
 
@@ -145,7 +145,7 @@ resource "kubernetes_secret" "this" {
 
 resource "kubernetes_stateful_set" "this" {
   metadata {
-    name = var.name
+    name      = var.name
     namespace = kubernetes_namespace.this.metadata[0].name
   }
 
@@ -291,4 +291,3 @@ resource "kubernetes_stateful_set" "this" {
     service_name = kubernetes_service.this.metadata[0].name
   }
 }
-
