@@ -272,6 +272,14 @@ resource "kubernetes_stateful_set" "this" {
       }
     }
 
+    update_strategy {
+      type = "RollingUpdate"
+
+      rolling_update {
+          - partition = 0
+      }
+    }
+
     volume_claim_template {
       metadata {
         name = "data"
