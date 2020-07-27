@@ -276,7 +276,7 @@ resource "kubernetes_stateful_set" "this" {
       type = "RollingUpdate"
 
       rolling_update {
-          - partition = 0
+        partition = 0
       }
     }
 
